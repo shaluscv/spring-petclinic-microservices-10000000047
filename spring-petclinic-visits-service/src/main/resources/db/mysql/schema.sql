@@ -1,7 +1,4 @@
-CREATE DATABASE IF NOT EXISTS petclinic;
-GRANT ALL PRIVILEGES ON petclinic.* TO pc@localhost IDENTIFIED BY 'pc';
-
-USE petclinic;
+-- Boot 3 migration: provision the database/user externally; use MYSQL_URL's database.
 
 CREATE TABLE IF NOT EXISTS visits (
   id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,

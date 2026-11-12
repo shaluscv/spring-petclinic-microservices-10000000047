@@ -52,14 +52,19 @@ public class ApiGatewayApplication {
 
     @Bean
     @LoadBalanced
-    RestTemplate loadBalancedRestTemplate() {
-        return new RestTemplate();
+    RestTemplate loadBalancedRestTemplate(
+            org.springframework.beans.factory.ObjectProvider<org.springframework.boot.web.client.RestTemplateCustomizer> customizers) {
+        return new org.springframework.boot.web.client.RestTemplateBuilder()
+            .additionalCustomizers(customizers.orderedStream().toList()).build();
     }
 
     @Bean
     @LoadBalanced
-    public WebClient.Builder loadBalancedWebClientBuilder() {
-        return WebClient.builder();
+    public WebClient.Builder loadBalancedWebClientBuilder(
+            org.springframework.beans.factory.ObjectProvider<org.springframework.boot.web.reactive.function.client.WebClientCustomizer> customizers) {
+        WebClient.Builder builder = WebClient.builder();
+        customizers.orderedStream().forEach(customizer -> customizer.customize(builder));
+        return builder;
     }
 
     @Value("classpath:/static/index.html")

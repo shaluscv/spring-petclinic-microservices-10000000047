@@ -40,6 +40,7 @@ class VetResource {
     private final VetRepository vetRepository;
 
     @GetMapping
+    @org.springframework.cache.annotation.Cacheable("vets")
     public List<Vet> showResourcesVetList() {
         return vetRepository.findAll();
     }

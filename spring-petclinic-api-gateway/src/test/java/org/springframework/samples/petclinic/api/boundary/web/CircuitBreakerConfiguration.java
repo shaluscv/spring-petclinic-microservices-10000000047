@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@org.springframework.boot.context.properties.EnableConfigurationProperties(
+    org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JConfigurationProperties.class)
 public class CircuitBreakerConfiguration {
 
     @Bean

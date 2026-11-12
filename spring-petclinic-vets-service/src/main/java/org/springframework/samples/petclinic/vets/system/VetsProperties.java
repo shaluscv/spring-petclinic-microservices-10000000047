@@ -28,13 +28,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "vets")
 public class VetsProperties {
 
-    private Cache cache;
+    private Cache cache = new Cache();
 
     @Data
     public static class Cache {
 
-        private int ttl;
+        private int ttl = 60;
 
-        private int heapSize;
+        private int heapSize = 100;
     }
 }

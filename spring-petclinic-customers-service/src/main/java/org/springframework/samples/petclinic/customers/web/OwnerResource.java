@@ -23,8 +23,7 @@ import org.springframework.samples.petclinic.customers.model.Owner;
 import org.springframework.samples.petclinic.customers.model.OwnerRepository;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Min;
+import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,7 +56,7 @@ class OwnerResource {
      * Read single Owner
      */
     @GetMapping(value = "/{ownerId}")
-    public Optional<Owner> findOwner(@PathVariable("ownerId") @Min(1) int ownerId) {
+    public Optional<Owner> findOwner(@PathVariable("ownerId") int ownerId) {
         return ownerRepository.findById(ownerId);
     }
 
@@ -74,7 +73,7 @@ class OwnerResource {
      */
     @PutMapping(value = "/{ownerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateOwner(@PathVariable("ownerId") @Min(1) int ownerId, @Valid @RequestBody Owner ownerRequest) {
+    public void updateOwner(@PathVariable("ownerId") int ownerId, @Valid @RequestBody Owner ownerRequest) {
         final Optional<Owner> owner = ownerRepository.findById(ownerId);
         final Owner ownerModel = owner.orElseThrow(() -> new ResourceNotFoundException("Owner "+ownerId+" not found"));
 

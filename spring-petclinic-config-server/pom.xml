@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.samples</groupId>
         <artifactId>spring-petclinic-microservices</artifactId>
-        <version>2.6.7</version>
+        <version>3.2.0</version>
     </parent>
 
     <properties>
@@ -36,7 +36,7 @@
         <!-- Third-party librairies -->
         <dependency>
             <groupId>org.jolokia</groupId>
-            <artifactId>jolokia-core</artifactId>
+            <artifactId>jolokia-support-spring</artifactId>
         </dependency>
 
         <!-- Testing -->
